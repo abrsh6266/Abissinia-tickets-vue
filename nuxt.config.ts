@@ -1,4 +1,34 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true }
-})
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/apollo",
+    "@nuxtjs/color-mode",
+    "@nuxt/image-edge",
+  ],
+
+  tailwindcss: {
+    exposeConfig: true,
+    viewer: true,
+    // and more...
+  },
+
+  image: {
+    domains: ["rickandmortyapi.com"],
+  },
+
+  colorMode: {
+    preference: "system", // default value of $colorMode.preference
+    fallback: "light", // fallback value if not system preference found
+    classSuffix: "",
+  },
+
+  apollo: {
+    clients: {
+      default: {
+        httpEndpoint: "https://rickandmortyapi.com/graphql",
+      },
+    },
+  },
+
+  compatibilityDate: "2024-07-03",
+});
