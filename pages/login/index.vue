@@ -1,40 +1,22 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import Cookies from 'js-cookie'
-import { useStore } from 'vuex'
-import { customFetch } from '~/utils'
+import { useAuthStore } from '~/stores/auth'
 import logo from '~/public/images/logo.png'
-
-const router = useRouter()
-const store = useStore()
 
 const formData = ref({
   email: '',
   password: '',
 })
 
+const authStore = useAuthStore()
+
 const handleChange = (event: Event) => {
   const target = event.target as HTMLInputElement
   formData.value = { ...formData.value, [target.name]: target.value }
 }
 
-const handleSubmit = async (event: Event) => {
+const handleSubmit = (event: Event) => {
   event.preventDefault()
-  try {
-    const response = await customFetch.post('/login', formData.value)
-    const data = response.data
-    Cookies.set('token', data.jwt)
-    store.dispatch('loginUser', { user: data.user })
-    router.push('/')
-    alert('Logged in')
-  } catch (error: any) {
-    const errorMessage =
-      error?.response?.data?.error?.message ||
-      'please double check your credentials'
-
-    alert(errorMessage)
-  }
+  authStore.login(formData.value.email, formData.value.password)
 }
 </script>
 

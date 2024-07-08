@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     "@nuxtjs/apollo",
     "@nuxtjs/color-mode",
     "@nuxt/image-edge",
+    "@pinia/nuxt",
   ],
 
   tailwindcss: {
