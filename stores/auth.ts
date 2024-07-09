@@ -4,31 +4,8 @@ import { useRouter } from 'vue-router'
 import Cookies from 'js-cookie'
 import { useMutation } from '@vue/apollo-composable'
 import gql from 'graphql-tag'
+import { LOGIN_USER, REGISTER_USER } from '~/graphql/mutations'
 
-// GraphQL mutations for login and registration
-const LOGIN_USER = gql`
-  mutation LoginUser($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-      user {
-        id
-        email
-      }
-    }
-  }
-`
-
-const REGISTER_USER = gql`
-  mutation RegisterUser($username: String!, $email: String!, $password: String!) {
-    register(username: $username, email: $email, password: $password) {
-      user {
-        id
-        username
-        email
-      }
-    }
-  }
-`
 
 interface User {
   id: string;
