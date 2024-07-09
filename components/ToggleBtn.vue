@@ -8,8 +8,7 @@ const onClick = () => (colorMode.preference = (colorMode.value === 'light' ? 'da
     <button @click="onClick"
         class="py-1 px-2 bg-gray-200 rounded-md dark:bg-gray-200/10 dark:hover:bg-gray-200/20 transition-delay-timer">
         <ColorScheme placeholder="...">
-            <Icon v-if="colorMode.value === 'dark'" name="ph:sun" class="w-4 h-4 dark:text-white" />
-            <Icon v-else name="ph:moon" class="w-4 h-4" />
+
         </ColorScheme>
     </button>
 </template>

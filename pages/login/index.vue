@@ -19,13 +19,8 @@ const { handleSubmit, errors } = useForm({
 const { value: email, errorMessage: emailError } = useField('email')
 const { value: password, errorMessage: passwordError } = useField('password')
 
-const onSubmit = handleSubmit(async (values: any) => {
-  try {
-    await authStore.login(values.email, values.password)
-    router.push('/')
-  } catch (error: any) {
-    alert(error.message)
-  }
+const onSubmit = handleSubmit(async (values) => {
+  await authStore.login(values.email, values.password)
 })
 </script>
 
@@ -35,7 +30,7 @@ const onSubmit = handleSubmit(async (values: any) => {
       <img :src="logo" alt="logo" style="max-width: 100%; height: auto;" />
       <h4 class="text-center text-3xl font-bold">Login</h4>
       <div>
-        <FormInput type="text" label="email" name="email" v-model="email" />
+        <FormInput type="email" label="email" name="email" v-model="email" />
         <span class="text-red-500">{{ emailError }}</span>
       </div>
       <div>

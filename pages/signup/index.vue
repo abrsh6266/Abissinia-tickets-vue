@@ -3,7 +3,6 @@ import { useAuthStore } from '~/stores/auth'
 import * as yup from 'yup'
 import logo from '~/public/images/logo.png'
 
-// Define your validation schema using Yup
 const schema = yup.object({
     username: yup.string().required('Username is required'),
     email: yup.string().email('Invalid email').required('Email is required'),
@@ -21,13 +20,8 @@ const { value: username, errorMessage: usernameError } = useField('username')
 const { value: email, errorMessage: emailError } = useField('email')
 const { value: password, errorMessage: passwordError } = useField('password')
 
-const onSubmit = handleSubmit(async (values: any) => {
-    try {
-        await authStore.register(values.username, values.email, values.password)
-        router.push('/login')
-    } catch (error: any) {
-        alert(error.message)
-    }
+const onSubmit = handleSubmit(async (values) => {
+    await authStore.register(values.username, values.email, values.password)
 })
 </script>
 
@@ -63,9 +57,8 @@ const onSubmit = handleSubmit(async (values: any) => {
                     </div>
                     <p class="text-center">
                         Already a member?
-                        <router-link to="/login" class="ml-2 link link-hover link-primary capitalize">
-                            login
-                        </router-link>
+                        <router-link to="/login"
+                            class="ml-2 link link-hover link-primary capitalize">login</router-link>
                     </p>
                 </form>
             </div>

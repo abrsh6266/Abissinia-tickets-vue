@@ -30,7 +30,6 @@ const { result, error, loading } = useQuery<CharacterTypes>(query);
       <h1 class="text-red-500 font-bold text-xl md:text-2xl">{{ error }}</h1>
     </div>
     <div v-if="loading" class="grid-layout w-full min-h-screen">
-      <Icon name="ph:spinner" class="text-6xl animate-spin text-red-500" />
     </div>
     <div class="grid-layout cursor-pointer md:flex md:flex-wrap md:justify-center">
       <div v-for="character in result?.characters?.results" :key="character.id">
