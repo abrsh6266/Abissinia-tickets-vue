@@ -26,7 +26,7 @@ const onSubmit = handleSubmit(async (values) => {
 
 <template>
   <div class="h-screen grid place-items-center">
-    <form @submit="onSubmit" method="post" class="card w-96 gap-y-4 shadow-lg flex flex-col bg-base-100 p-4">
+    <form @submit.prevent="onSubmit" method="post" class="card w-96 gap-y-4 shadow-lg flex flex-col bg-base-100 p-4">
       <img :src="logo" alt="logo" style="max-width: 100%; height: auto;" />
       <h4 class="text-center text-3xl font-bold">Login</h4>
       <div>

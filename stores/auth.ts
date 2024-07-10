@@ -24,6 +24,7 @@ export const useAuthStore = defineStore("auth", () => {
 
   const setUser = (userData: User) => {
     user.value = userData;
+    Cookies.set("user", userData);
   };
 
   const setToken = (jwtToken: string) => {
@@ -46,9 +47,11 @@ export const useAuthStore = defineStore("auth", () => {
         alert("Logged in");
       } else {
         alert("Invalid credentials");
+        return
       }
     } catch (error: any) {
       alert("An error occurred during login");
+      return
     }
   };
 
